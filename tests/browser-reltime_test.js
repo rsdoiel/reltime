@@ -6,13 +6,8 @@
 // Released under the Simplified BSD License.
 // See: http://opensource.org/licenses/bsd-license.php
 //
-/*jslint devel: true, node: true, maxerr: 50, indent: 4,  vars: true, sloppy: true */
-
-var assert = require("assert"),
-	path = require("path"),
-	harness = require("harness"),
-	reltime = require("../reltime");
-
+/*jslint devel: true, browser: true, maxerr: 50, indent: 4,  vars: true, sloppy: true */
+/*global harness, reltime, assert */
 harness.push({callback: function (test_label) {
 	var s, expected_s, t = new Date("12/07/2012 11:22:00 GMT-0800 (PST)");
 	
@@ -221,6 +216,6 @@ harness.push({callback: function (test_label) {
 	harness.completed(test_label);
 }, label: "test combinations" });
 
-harness.RunIt(path.basename(module.filename), 10);
+harness.RunIt("browser-reltime-tests", 10);
 
 

@@ -1,15 +1,17 @@
 reltime
 =======
 
-A light weight relative time notation parser (e.g. 1d 2h, 3m, 4s is rendered as a relative date).
+A light weight relative time notation parser (e.g. 1d 2h, 3m, 4s is
+rendered as a relative date).
 
 # Overview and rationale
 
 When building command line utilities I occasionally need to express
-time in a simple relative notation of day, hours, minutes and seconds (e.g. 1d 2h 3m 4s).  There is a good, full featured time/date module called
-moment but it is also large for what I often need. Hence reltime.js. It
-will process relative time based on days, hours, minutes, and seconds relative
-to a provided date and return an adjusted date.
+time in a simple relative notation of day, hours, minutes and seconds (e.g.
+1d 2h 3m 4s).  There is a good, full featured time/date module called
+moment but it is also much more than what I need. That lead to 
+reltime.js. It is a very simple relative time notation parser that only
+works on days, hours, minutes and seconds. It's less than 100 lines unminified.
 
 ```
 	23 hours 4 minutes 2 seconds
@@ -42,8 +44,8 @@ in the future:
 ```JavaScript
 	var reltime = require("reltime");
 	
-	console.log("Show one hour, three minutes and ten seconds
-in the future", reltime.parse(new Date(), "1h 3m 10s").toString());
+	console.log("Show one hour, three minutes and ten seconds in the future",
+		reltime.parse(new Date(), "1h 3m 10s").toString());
 ```
 
 ## Task
