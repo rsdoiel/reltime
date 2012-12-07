@@ -36,15 +36,6 @@
 exports.parse = function (date_object, time_notation) {
 	var toks = {
 		/* Token, conversion to milliseconds value */
-		y: 31536000000 /* 365*24*60*60*1000 */,
-		yr: 31536000000,
-		yrs: 31536000000,
-		year: 31536000000,
-		years: 31536000000,
-		M: 2628000000 /* 365*24*60*60*1000/12 */,
-		mon: 2628000000,
-		month: 2628000000,
-		months: 2628000000,
 		d: 86400000 /* 24*60*60*1000 */,
 		dy: 86400000,
 		day: 86400000,
@@ -71,18 +62,14 @@ exports.parse = function (date_object, time_notation) {
 	i = 0, j = 0, cur = -1;
 	
 	for (i = 0; i < tokens.length; i += 1) {
-		console.log("DEBUG raw token:", tokens[i], "val", val);
 		tok = false;
 		if (Number(tokens[i])) {
 			val = tokens[i];
-			console.log("DEBUG is number:", val);
 		} else {
 			cur = tokens[i].match(/[a-z]/);
 			if (cur) {
-				console.log("DEBUG cur:", cur);
 				j = cur.index;
 				tok = tokens[i].substr(j);
-				console.log("DEBUG tok:", tok);
 				if (j > 0) {
 					val = tokens[i].substr(0, j);
 				}
@@ -94,7 +81,6 @@ exports.parse = function (date_object, time_notation) {
 				scale = toks[tok];
 				result += val * scale;
 				// FIXME: handle leap year if tok
-				console.log("DEBUG val", val,"scale:", scale, "tok", tok);
 				val = 0;
 				tok = false;
 			}

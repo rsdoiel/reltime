@@ -5,9 +5,11 @@ A light weight relative time notation parser (e.g. 1d 2h, 3m, 4s is rendered as 
 
 # Overview and rationale
 
-There is a solid, feature ful, Node/Browser module called moment.js. It is the swiss army knife of date/time handling in JavaScript. It is excellent. Sometimes it is too much.
-
-reltime does one thing. It parses a simple time string notation relative to an existing JavaScript date object. Examples of the simple notation -
+When building command line utilities I occasionally need to express
+time in a simple relative notation of day, hours, minutes and seconds (e.g. 1d 2h 3m 4s).  There is a good, full featured time/date module called
+moment but it is also large for what I often need. Hence reltime.js. It
+will process relative time based on days, hours, minutes, and seconds relative
+to a provided date and return an adjusted date.
 
 ```
 	23 hours 4 minutes 2 seconds
