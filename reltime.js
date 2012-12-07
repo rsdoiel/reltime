@@ -15,10 +15,90 @@
 // a new date object reflecting the new time.
 // Example: var new_time = reltime.parse(new Date(), "1d 2h 3m 4s");
 //
+// These are the tokens that delimit the denomination being calculated:
+//	
+//		y, year, years - relative +/- year(s)
+//		mon, month, months - relative +/- month(s)
+//		d, day, days - relative +/- day(s)
+//		h, hour, hours - relative +/- hour(s)
+//		m, minute, minutes - relative +/- minutes
+//		s, second, seconds - relative +/- seconds
+//
+// Each delimiter can be processed by a positive or negative number.
+// Values are converted to Unix style timestamp, combined then returned
+// as an updated data object. If their is a problem in the parse then
+// false is returned.
+//
 // @param date_object - this is a native JavaScript date object
 // @param time_notation - A string in the simple relative time notation
 // @return a JavaScript Date object of false if something goes wrong.
 //
 exports.parse = function (date_object, time_notation) {
-  throw "parse() not implemented";
+	var toks = {
+		/* Token, conversion to milliseconds value */
+		y: 31536000000 /* 365*24*60*60*1000 */,
+		yr: 31536000000,
+		yrs: 31536000000,
+		year: 31536000000,
+		years: 31536000000,
+		M: 2628000000 /* 365*24*60*60*1000/12 */,
+		mon: 2628000000,
+		month: 2628000000,
+		months: 2628000000,
+		d: 86400000 /* 24*60*60*1000 */,
+		dy: 86400000,
+		day: 86400000,
+		days: 86400000,
+		h: 3600000/* 60*60*1000 */,
+		hr: 3600000,
+		hour: 3600000,
+		hours: 3600000,
+		m: 60000/* 60*1000 */,
+		min: 60000,
+		minute: 60000,
+		minutes: 60000,
+		s: 1000 /* 1000 */,
+		sec: 1000,
+		secs: 1000,
+		second: 1000,
+		seconds: 1000
+	}, 
+	result = date_object.valueOf(),
+	tokens = time_notation.toLowerCase().split(" "),
+	val = 0,
+	scale = 1,
+	tok,
+	i = 0, j = 0, cur = -1;
+	
+	for (i = 0; i < tokens.length; i += 1) {
+		console.log("DEBUG raw token:", tokens[i], "val", val);
+		tok = false;
+		if (Number(tokens[i])) {
+			val = tokens[i];
+			console.log("DEBUG is number:", val);
+		} else {
+			cur = tokens[i].match(/[a-z]/);
+			if (cur) {
+				console.log("DEBUG cur:", cur);
+				j = cur.index;
+				tok = tokens[i].substr(j);
+				console.log("DEBUG tok:", tok);
+				if (j > 0) {
+					val = tokens[i].substr(0, j);
+				}
+			} else {
+				tok = tokens[i];
+			}
+
+			if (tok && val) {
+				scale = toks[tok];
+				result += val * scale;
+				// FIXME: handle leap year if tok
+				console.log("DEBUG val", val,"scale:", scale, "tok", tok);
+				val = 0;
+				tok = false;
+			}
+		}
+	}
+	return new Date(result);
 };

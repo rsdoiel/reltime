@@ -12,182 +12,49 @@ var assert = require("assert"),
 	harness = require("harness"),
 	reltime = require("../reltime");
 
-  
 harness.push({callback: function (test_label) {
 	var s, expected_s, t = new Date("12/07/2012 11:22:00 GMT-0800 (PST)");
 	
 	expected_s = t.toString();
-	s = reltime.parse(t, "0y");
+	s = reltime.parse(t, "0s");
 	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
 	
 	
-	expected_s = (new Date("12/07/2011 11:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "-1y");
+	expected_s = (new Date("12/07/2012 11:21:59 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "-1s");
 	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
 
-	expected_s = (new Date("12/07/2013 11:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "1y");
+	expected_s = (new Date("12/07/2012 11:22:01 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "1s");
 	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
 
 
 	expected_s = t.toString();
-	s = reltime.parse(t, "0 year");
+	s = reltime.parse(t, "0 second");
 	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
 		
-	expected_s = (new Date("12/07/2011 11:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "-1 year");
+	expected_s = (new Date("12/07/2012 11:21:59 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "-1 second");
 	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
 
-	expected_s = (new Date("12/07/2013 11:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "1 year");
+	expected_s = (new Date("12/07/2012 11:22:01 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "1 second");
 	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
 
 	expected_s = t.toString();
-	s = reltime.parse(t, "0 years");
+	s = reltime.parse(t, "0 seconds");
 	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
 		
-	expected_s = (new Date("12/07/2011 11:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "-1 years");
+	expected_s = (new Date("12/07/2012 11:22:01 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "1 seconds");
 	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
 
-	expected_s = (new Date("12/07/2013 11:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "1 years");
+	expected_s = (new Date("12/07/2012 11:21:59 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "-1 seconds");
 	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
 
 	harness.completed(test_label);
-}, label: "test relative years" });
-
-harness.push({callback: function (test_label) {
-	var s, expected_s, t = new Date("12/07/2012 11:22:00 GMT-0800 (PST)");
-	
-	expected_s = t.toString();
-	s = reltime.parse(t, "0mom");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-	
-	
-	expected_s = (new Date("11/07/2012 11:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "-1mon");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-
-	expected_s = (new Date("01/07/2013 11:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "1mon");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-
-
-	expected_s = t.toString();
-	s = reltime.parse(t, "0 month");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-		
-	expected_s = (new Date("11/07/2012 11:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "-1 month");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-
-	expected_s = (new Date("01/07/2013 11:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "1 month");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-
-	expected_s = t.toString();
-	s = reltime.parse(t, "0 months");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-		
-	expected_s = (new Date("11/07/2012 11:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "-1 months");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-
-	expected_s = (new Date("01/07/2013 11:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "1 months");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-
-	harness.completed(test_label);
-}, label: "test relative months" });
-
-harness.push({callback: function (test_label) {
-	var s, expected_s, t = new Date("12/07/2012 11:22:00 GMT-0800 (PST)");
-	
-	expected_s = t.toString();
-	s = reltime.parse(t, "0d");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-	
-	
-	expected_s = (new Date("12/06/2012 11:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "-1d");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-
-	expected_s = (new Date("12/08/2012 11:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "1d");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-
-
-	expected_s = t.toString();
-	s = reltime.parse(t, "0 day");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-		
-	expected_s = (new Date("12/06/2012 11:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "-1 day");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-
-	expected_s = (new Date("12/08/2012 11:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "1 day");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-
-	expected_s = t.toString();
-	s = reltime.parse(t, "0 days");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-		
-	expected_s = (new Date("12/06/2012 11:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "-1 days");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-
-	expected_s = (new Date("12/08/2012 11:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "1 days");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-
-	harness.completed(test_label);
-}, label: "test relative days" });
-
-harness.push({callback: function (test_label) {
-	var s, expected_s, t = new Date("12/07/2012 11:22:00 GMT-0800 (PST)");
-	
-	expected_s = t.toString();
-	s = reltime.parse(t, "0h");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-	
-	
-	expected_s = (new Date("12/07/2012 10:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "-1h");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-
-	expected_s = (new Date("12/07/2012 12:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "1h");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-
-
-	expected_s = t.toString();
-	s = reltime.parse(t, "0 hour");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-		
-	expected_s = (new Date("12/07/2012 10:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "-1 hour");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-
-	expected_s = (new Date("12/07/2012 12:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "1 hour");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-
-	expected_s = t.toString();
-	s = reltime.parse(t, "0 hours");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-		
-	expected_s = (new Date("12/07/2012 10:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "-1 hours");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-
-	expected_s = (new Date("12/07/2012 12:22:00 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "1 hours");
-	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
-
-	harness.completed(test_label);
-}, label: "test relative hours" });
+}, label: "test relative seconds" });
 
 harness.push({callback: function (test_label) {
 	var s, expected_s, t = new Date("12/07/2012 11:22:00 GMT-0800 (PST)");
@@ -237,45 +104,179 @@ harness.push({callback: function (test_label) {
 	var s, expected_s, t = new Date("12/07/2012 11:22:00 GMT-0800 (PST)");
 	
 	expected_s = t.toString();
-	s = reltime.parse(t, "0s");
+	s = reltime.parse(t, "0h");
 	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
 	
 	
-	expected_s = (new Date("12/07/2012 11:21:59 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "-1s");
+	expected_s = (new Date("12/07/2012 10:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "-1h");
 	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
 
-	expected_s = (new Date("12/07/2012 11:22:01 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "1s");
+	expected_s = (new Date("12/07/2012 12:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "1h");
 	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
 
 
 	expected_s = t.toString();
-	s = reltime.parse(t, "0 second");
+	s = reltime.parse(t, "0 hour");
 	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
 		
-	expected_s = (new Date("12/07/2012 11:21:59 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "-1 second");
+	expected_s = (new Date("12/07/2012 10:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "-1 hour");
 	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
 
-	expected_s = (new Date("12/07/2012 11:22:01 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "1 second");
+	expected_s = (new Date("12/07/2012 12:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "1 hour");
 	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
 
 	expected_s = t.toString();
-	s = reltime.parse(t, "0 seconds");
+	s = reltime.parse(t, "0 hours");
 	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
 		
-	expected_s = (new Date("12/07/2012 11:22:01 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "-1 seconds");
+	expected_s = (new Date("12/07/2012 10:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "-1 hours");
 	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
 
-	expected_s = (new Date("12/07/2012 11:21:59 GMT-0800 (PST)")).toString();
-	s = reltime.parse(t, "1 seconds");
+	expected_s = (new Date("12/07/2012 12:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "1 hours");
 	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
 
 	harness.completed(test_label);
-}, label: "test relative seconds" });
+}, label: "test relative hours" });
+
+harness.push({callback: function (test_label) {
+	var s, expected_s, t = new Date("12/07/2012 11:22:00 GMT-0800 (PST)");
+	
+	expected_s = t.toString();
+	s = reltime.parse(t, "0d");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+	
+	
+	expected_s = (new Date("12/06/2012 11:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "-1d");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+	expected_s = (new Date("12/08/2012 11:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "1d");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+
+	expected_s = t.toString();
+	s = reltime.parse(t, "0 day");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+		
+	expected_s = (new Date("12/06/2012 11:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "-1 day");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+	expected_s = (new Date("12/08/2012 11:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "1 day");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+	expected_s = t.toString();
+	s = reltime.parse(t, "0 days");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+		
+	expected_s = (new Date("12/06/2012 11:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "-1 days");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+	expected_s = (new Date("12/08/2012 11:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "1 days");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+	harness.completed(test_label);
+}, label: "test relative days" });
+
+harness.push({callback: function (test_label) {
+	var s, expected_s, t = new Date("12/07/2012 11:22:00 GMT-0800 (PST)");
+	
+	expected_s = t.toString();
+	s = reltime.parse(t, "0mon");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+
+	expected_s = (new Date("11/07/2012 11:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "-1mon");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+	expected_s = (new Date("01/07/2013 11:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "1mon");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+
+	expected_s = t.toString();
+	s = reltime.parse(t, "0 month");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+		
+	expected_s = (new Date("11/07/2012 11:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "-1 month");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+	expected_s = (new Date("01/07/2013 11:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "1 month");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+	expected_s = t.toString();
+	s = reltime.parse(t, "0 months");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+		
+	expected_s = (new Date("11/07/2012 11:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "-1 months");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+	expected_s = (new Date("01/07/2013 11:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "1 months");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+	harness.completed(test_label);
+}, label: "test relative months" });
+
+
+  
+harness.push({callback: function (test_label) {
+	var s, expected_s, t = new Date("12/07/2012 11:22:00 GMT-0800 (PST)");
+	
+	expected_s = t.toString();
+	s = reltime.parse(t, "0y");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+	
+	
+	expected_s = (new Date("12/07/2011 11:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "-1y");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+	expected_s = (new Date("12/07/2013 11:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "1y");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+
+	expected_s = t.toString();
+	s = reltime.parse(t, "0 year");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+		
+	expected_s = (new Date("12/07/2011 11:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "-1 year");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+	expected_s = (new Date("12/07/2013 11:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "1 year");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+	expected_s = t.toString();
+	s = reltime.parse(t, "0 years");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+		
+	expected_s = (new Date("12/07/2011 11:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "-1 years");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+	expected_s = (new Date("12/07/2013 11:22:00 GMT-0800 (PST)")).toString();
+	s = reltime.parse(t, "1 years");
+	assert.equal(s, expected_s, "\n" + s + "\n" + expected_s);
+
+	harness.completed(test_label);
+}, label: "test relative years" });
 
 harness.push({callback: function (test_label) {
 	var s, expected_s, t = new Date("12/07/2012 11:22:00 GMT-0800 (PST)");
