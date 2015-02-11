@@ -15,6 +15,10 @@
     "time",
     "parsing"
   ],
+  "engines" : {
+    "node" : "0.12.x",
+    "npm" : ">= 2.5.x"
+  },
   "devDependencies": {
     "harness": "0.0.x"
   },
