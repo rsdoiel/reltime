@@ -4,7 +4,7 @@
   "description": "A function to calculate relative time based on a simple date string notation. Intended to be lighter weight than the excellent moment.js.",
   "main": "reltime.js",
   "scripts": {
-    "test": "tests/reltime_test.js"
+    "test": "node tests/reltime_test.js"
   },
   "repository": {
     "type": "git",
