@@ -15,6 +15,9 @@
     "time",
     "parsing"
   ],
+  "devDependencies": {
+    "harness": "0.0.x"
+  },
   "author": "R. S. Doiel",
   "license": "BSD"
 }
