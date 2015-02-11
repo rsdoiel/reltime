@@ -1,6 +1,6 @@
 {
   "name": "reltime",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A function to calculate relative time based on a simple date string notation. Intended to be lighter weight than the excellent moment.js.",
   "main": "reltime.js",
   "scripts": {
